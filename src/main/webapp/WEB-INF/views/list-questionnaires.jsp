@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>List Answers</title>
+		<title>List Questionnaires</title>
 		
 		<!-- Style sheet reference -->
 		<link type="text/css"
@@ -20,37 +20,41 @@
 		<div id="container">
 			<div id="content">
 			
-				<input type="button" value="Add Answer"
+				<input type="button" value="Add Questionnaire"
 						onclick="window.location.href='showFormForAdd'; return false;"
 						class="add-button">
 						
 				<table>
 					<tr>
-						<th>Text</th>
+						<th>Title</th>
+						<th>Subject</th>
+						<th>Level</th>
 						<th>Action</th>
 					</tr>
 					
-					<!-- loop over and print our answers - jstl -->				
-					<c:forEach var="tempAnswer" items="${answers}">
+					<!-- loop over and print our questionnaires - jstl -->				
+					<c:forEach var="tempQuestionnaire" items="${questionnaires}">
 					
-						<!-- "update" link with answer id -->
-						<c:url var="updateLink" value="/answer/showFormForUpdate">
-							<c:param name="answerId" value="${tempAnswer.id}"/>
+						<!-- "update" link with questionnaire id -->
+						<c:url var="updateLink" value="/questionnaire/showFormForUpdate">
+							<c:param name="questionnaireId" value="${tempQuestionnaire.id}"/>
 						</c:url>
 						
 						<!-- "delete" link with answer id -->
-						<c:url var="deleteLink" value="/answer/delete">
-							<c:param name="answerId" value="${tempAnswer.id}"/>
+						<c:url var="deleteLink" value="/questionnaire/delete">
+							<c:param name="questionnaireId" value="${tempQuestionnaire.id}"/>
 						</c:url>
 						
 						<tr>
-							<td>${tempAnswer.text}</td>
+							<td>${tempQuestionnaire.title}</td>
+							<td>${tempQuestionnaire.subject}</td>
+							<td>${tempQuestionnaire.level}</td>
 							<td>
 								<!-- display the update link -->
 								<a href="${updateLink}">Update</a>
 								|
 								<a href="${deleteLink}"
-									onclick="if(!(confirm('Are you sure you want to delete this answer?'))) return false">Delete</a>
+									onclick="if(!(confirm('Are you sure you want to delete this questionnaire?'))) return false">Delete</a>
 							</td>						
 						</tr>
 					</c:forEach>

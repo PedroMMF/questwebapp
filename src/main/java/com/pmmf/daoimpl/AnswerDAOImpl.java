@@ -51,7 +51,7 @@ public class AnswerDAOImpl implements AnswerDAO{
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 				
-		// retrieve/read from database using the primary key
+		// read from database using the primary key
 		Answer theAnswer = currentSession.get(Answer.class, theId);
 				
 		return theAnswer;

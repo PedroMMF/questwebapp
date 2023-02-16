@@ -1,1 +1,1 @@
-<% response.sendRedirect("answer/list"); %>
+<% response.sendRedirect("questionnaire/list"); %>

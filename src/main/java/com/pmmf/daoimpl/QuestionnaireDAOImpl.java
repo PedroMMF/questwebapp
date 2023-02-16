@@ -36,20 +36,38 @@ public class QuestionnaireDAOImpl implements QuestionnaireDAO {
 
 	@Override
 	public void saveQuestionnaire(Questionnaire theQuestionnaire) {
-		// TODO Auto-generated method stub
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+				
+		// save/update the questionaire
+		currentSession.saveOrUpdate(theQuestionnaire);
 		
 	}
 
 	@Override
 	public Questionnaire getQuestionnaire(int theId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+						
+		// read from database using the primary key
+		Questionnaire theQuestionnaire = currentSession.get(Questionnaire.class, theId);
+		
+		return theQuestionnaire;
 	}
 
 	@Override
 	public void deleteQuestionnaire(int theId) {
-		// TODO Auto-generated method stub
 		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+						
+		// delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Questionnaire where id=:questionnaireId");
+		theQuery.setParameter("questionnaireId", theId);
+		
+		theQuery.executeUpdate();
 	}
 
 }

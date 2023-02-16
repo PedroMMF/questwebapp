@@ -40,7 +40,7 @@ public class Test {
 			inverseJoinColumns=@JoinColumn(name="question_id"))
 	private List<Question> questions;
 	
-	@ManyToMany(fetch=FetchType.LAZY, 
+	@ManyToMany(fetch=FetchType.EAGER, 
 			cascade={CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="questionnaires_tests",

@@ -13,7 +13,7 @@ import com.pmmf.entity.Answer;
 @Service
 public class AnswerServiceImpl implements AnswerService {
 
-	// Inject customer dao
+	// Inject answer dao
 	@Autowired
 	private AnswerDAO answerDAO;
 		

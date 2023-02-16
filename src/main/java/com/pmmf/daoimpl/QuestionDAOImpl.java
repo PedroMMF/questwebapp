@@ -36,20 +36,37 @@ public class QuestionDAOImpl implements QuestionDAO {
 
 	@Override
 	public void saveQuestion(Question theQuestion) {
-		// TODO Auto-generated method stub
 		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save/update the question
+		currentSession.saveOrUpdate(theQuestion);		
 	}
 
 	@Override
 	public Question getQuestion(int theId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// retrieve/read from database using the primary key
+		Question theQuestion = currentSession.get(Question.class, theId);
+		
+		return theQuestion;
 	}
 
 	@Override
 	public void deleteQuestion(int theId) {
-		// TODO Auto-generated method stub
 		
+		// get current hibernate session
+				Session currentSession = sessionFactory.getCurrentSession();
+			
+		// delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Question where id=:questionId");
+		theQuery.setParameter("questionId", theId);
+		
+		theQuery.executeUpdate();
 	}
 
 	

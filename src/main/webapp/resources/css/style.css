@@ -33,6 +33,8 @@ tr:nth-child(odd) {background: #BBBBBB}
 #container h3 {color: #000;}
 #container #content {margin-top: 20px;}
 
+.droplist{with:1000px}
+
 .add-button {
 	border: 1px solid #666; 
 	border-radius: 5px; 

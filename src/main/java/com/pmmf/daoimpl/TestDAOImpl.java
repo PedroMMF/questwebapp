@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pmmf.dao.TestDAO;
+import com.pmmf.entity.Answer;
 import com.pmmf.entity.Test;
 
 @Repository
@@ -36,19 +37,37 @@ public class TestDAOImpl implements TestDAO{
 
 	@Override
 	public void saveTest(Test theTest) {
-		// TODO Auto-generated method stub
 		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save/update the answer
+		currentSession.saveOrUpdate(theTest);
 	}
 
 	@Override
 	public Test getTest(int theId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// read from database using the primary key
+		Test theTest = currentSession.get(Test.class, theId);
+						
+		return theTest;
 	}
 
 	@Override
 	public void deleteTest(int theId) {
-		// TODO Auto-generated method stub
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+						
+		// delete object with primary key
+		Query theQuery = currentSession.createQuery("delete from Test where id=:testId");
+		theQuery.setParameter("testId", theId);
+						
+		theQuery.executeUpdate();
 		
 	}
 

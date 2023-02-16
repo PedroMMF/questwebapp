@@ -2,13 +2,13 @@ package com.pmmf.dao;
 
 import java.util.List;
 
-public interface GenericDAO<E> {
+public interface GenericDAO<T> {
 	
-	List<E> getList(E entity);
+	List<T> getList(T entity);
 	
-	void save(E entity);
+	void save(T entity);
 	
-	E get(int id);
+	T get(int id);
 	
-	void delete(E entity);
+	void delete(T entity);
 }

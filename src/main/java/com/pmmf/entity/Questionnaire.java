@@ -32,7 +32,7 @@ public class Questionnaire {
 	@Column(name="level", length = 8, nullable = false)
 	private int level;
 	
-	@ManyToMany(fetch=FetchType.LAZY, 
+	@ManyToMany(fetch=FetchType.EAGER, 
 			cascade={CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(name="questionnaires_tests",
